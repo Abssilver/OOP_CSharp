@@ -24,6 +24,11 @@ namespace OOP_Homework
             var badAccount = CreateTestAccount();
             Console.WriteLine("BreakPoint");
             Console.WriteLine(badAccount.GetData());
+            var betterAccount = CreateSecondAccount();
+            Console.ReadKey();
+            Console.WriteLine("BreakPoint");
+            Console.WriteLine(betterAccount.GetData());
+            Console.ReadKey();
         }
 
         private static Account CreateTestAccount()
@@ -34,6 +39,12 @@ namespace OOP_Homework
             badAccount.ChangeAccountType(AccountType.Individual);
             badAccount.RemoveCash(500_000);
             return badAccount;
+        }
+
+        private static ImprovedAccount CreateSecondAccount()
+        {
+            var betterAccount = new ImprovedAccount(500_000, AccountType.Individual);
+            return betterAccount;
         }
     }
 }
