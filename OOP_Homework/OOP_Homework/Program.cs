@@ -23,11 +23,11 @@ namespace OOP_Homework
         {
             var badAccount = CreateTestAccount();
             Console.WriteLine("BreakPoint");
-            Console.WriteLine(badAccount.GetData());
-            var betterAccount = CreateSecondAccount();
+            Console.WriteLine($"Result: {badAccount.GetData()}");
             Console.ReadKey();
+            var betterAccount = CreateSecondAccount();
             Console.WriteLine("BreakPoint");
-            Console.WriteLine(betterAccount.GetData());
+            Console.WriteLine($"Result: {betterAccount.GetData()}");
             Console.ReadKey();
         }
 
@@ -43,7 +43,16 @@ namespace OOP_Homework
 
         private static ImprovedAccount CreateSecondAccount()
         {
+            var cashToAdd = 1_000_000;
+            var cashToRemove = 500_000;
             var betterAccount = new ImprovedAccount(500_000, AccountType.Individual);
+            Console.WriteLine(betterAccount.GetData());
+            betterAccount.AddCash(cashToAdd);
+            Console.WriteLine($"Add: {cashToAdd}");
+            Console.WriteLine(betterAccount.GetData());
+            betterAccount.RemoveCash(cashToRemove);
+            Console.WriteLine($"Remove: {cashToRemove}");
+            Console.WriteLine(betterAccount.GetData());
             return betterAccount;
         }
     }

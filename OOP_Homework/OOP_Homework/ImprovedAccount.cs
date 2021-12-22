@@ -31,7 +31,22 @@ namespace OOP_Homework
             id++;
         }
 
-        //TODO: still need something like addCash / removeCash
+        public void AddCash(decimal cashToAdd)
+        {
+            if (cashToAdd <= 0) 
+                return;   
+            
+            _balance += cashToAdd;
+        }
+
+        public void RemoveCash(decimal cashToRemove)
+        {
+            if (cashToRemove <= 0)
+                return;
+            
+            _balance -= cashToRemove;
+        }
+        
         public string GetData()
         {
             return $"Account: {_accountNumber}, Balance: {_balance}, Account Type: {_accountType}";
