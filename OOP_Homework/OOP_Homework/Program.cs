@@ -18,10 +18,6 @@ namespace OOP_Homework
     {
         static void Main(string[] args)
         {
-            var badAccount = CreateTestAccount();
-            Console.WriteLine("BreakPoint");
-            Console.WriteLine($"Result: {badAccount.GetData()}");
-            Console.ReadKey();
             var betterAccount = CreateSecondAccount();
             Console.WriteLine("BreakPoint");
             Console.WriteLine($"Result: {betterAccount.GetData()}");
