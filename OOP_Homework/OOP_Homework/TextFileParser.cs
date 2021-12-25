@@ -32,11 +32,11 @@ namespace OOP_Homework
             if (string.IsNullOrEmpty(fileNameToSave))
                 return;
             
-            if (File.Exists(_path))
+            if (File.Exists(Path))
             {
                 string line = null;
                 using (StreamReader reader = 
-                       new StreamReader(File.Open(_path, FileMode.Open, FileAccess.Read)))
+                       new StreamReader(File.Open(Path, FileMode.Open, FileAccess.Read)))
                 {
                     var path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), fileNameToSave);
                     using (StreamWriter writer = 
@@ -46,16 +46,20 @@ namespace OOP_Homework
                         {
                             SearchMail(ref line);
                             if (!string.IsNullOrEmpty(line) && line.Contains(EmailAtSymbol))
+                            {                            
                                 writer.WriteLine(line);
+                                Console.WriteLine($"Writing: {line}");
+                            }
                             else
                                 Console.WriteLine("Warning. Data is invalid! Trying next line");
                         }
                     }
+                    Console.WriteLine($"File created at: {path}");
                 }
             }
             else
             {
-                Console.WriteLine($"Invalid path: {_path}");
+                Console.WriteLine($"Invalid path: {Path}");
             }
         }
 

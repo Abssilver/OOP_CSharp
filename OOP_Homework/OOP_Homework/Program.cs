@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace OOP_Homework
 {
@@ -28,16 +29,14 @@ namespace OOP_Homework
             Console.WriteLine("BreakPoint. Any key to revert");
             Console.ReadKey();
             Console.WriteLine($"Result: {StringRevertUtil.GetRevertString(testString)}");
-        }
 
-        private static Account CreateTestAccount()
-        {
-            var badAccount = new Account();
-            badAccount.AssignId(0);
-            badAccount.AddCash(1_000_000);
-            badAccount.ChangeAccountType(AccountType.Individual);
-            badAccount.RemoveCash(500_000);
-            return badAccount;
+            Console.WriteLine("Starting parser service");
+            var path = Path.GetFullPath(
+                Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..", "TextExample.txt"));
+            var parser = new TextFileParser(path, '&');
+            parser.CreateEmailList("ExampleResult.txt");
+            Console.WriteLine("BreakPoint. Any key to continue");
+            Console.ReadKey();
         }
 
         private static ImprovedAccount CreateSecondAccount()
