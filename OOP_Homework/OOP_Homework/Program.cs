@@ -26,6 +26,12 @@ namespace OOP_Homework
             Console.WriteLine("BreakPoint");
             Console.WriteLine($"Result: {betterAccount.GetData()}");
             Console.ReadKey();
+
+            var testString = "nice to meet you";
+            Console.WriteLine(testString);
+            Console.WriteLine("BreakPoint. Any key to revert");
+            Console.ReadKey();
+            Console.WriteLine($"Result: {StringRevertUtil.GetRevertString(testString)}");
         }
 
         private static Account CreateTestAccount()
