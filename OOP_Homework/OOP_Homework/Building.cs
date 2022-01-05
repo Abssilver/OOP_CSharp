@@ -8,32 +8,38 @@
     Для этого в классе предусмотреть статическое поле, которое бы хранило последний использованный номер здания, и 
     предусмотреть метод, который увеличивал бы значение этого поля.
     */
-    public class Building
+    internal class Building
     {
-        private static long buildingId;
+        private const double DefaultHeight = 5;
+        private const int DefaultFloorCount = 2;
+        private const int DefaultApartmentCount = 8;
+        private const int DefaultEntranceCount = 1;
+        
+        private static long _buildingId;
         private long _id;
         private double _height;
         private int _floorCount;
         private int _apartmentCount;
         private int _entranceCount;
 
-        public Building()
+        public Building(): this(DefaultHeight)
+        { }
+        public Building(double height, int floorCount = DefaultFloorCount, 
+            int apartmentCount = DefaultApartmentCount,
+            int entranceCount = DefaultEntranceCount)
         {
             SetId(GenerateNewId());
+            SetHeight(height);
+            SetFloorCount(floorCount);
+            SetApartmentCount(apartmentCount);
+            SetEntranceCount(entranceCount);
         }
-        
-        public void SetHeight(double height) => _height = height;
-        public double GetHeight() => _height;
-        
-        public void SetFloorCount(int floorCount) => _floorCount = floorCount;
-        public int GetFloorCount() => _floorCount;
-        
-        public void SetApartmentCount(int apartmentCount) => _apartmentCount = apartmentCount;
-        public int GetTotalApartmentCount() => _apartmentCount;
-        
-        public void SetEntranceCount(int entranceCount) => _entranceCount = entranceCount;
-        public int GetEntranceCount() => _entranceCount;
 
+        public long GetId() => _id;
+        public double GetHeight() => _height;
+        public int GetFloorCount() => _floorCount;
+        public int GetTotalApartmentCount() => _apartmentCount;
+        public int GetEntranceCount() => _entranceCount;
         public double GetFloorHeight(int floor)
         {
             if (floor <= 0 || floor > _floorCount)
@@ -71,14 +77,32 @@
                 ? (int)System.MathF.Floor(apartmentPerFloor)
                 : _apartmentCount - (int)System.MathF.Floor((_floorCount - 1) * apartmentPerFloor);
         }
-        
-        public long GetId() => _id;
 
         private void SetId(long id) => _id = id;
 
+        private void SetHeight(double height)
+        {
+            _height = height <= 0 ? DefaultHeight : height;
+        }
+
+        private void SetFloorCount(int floorCount)
+        {
+            _floorCount = floorCount <= 0 ? DefaultFloorCount : floorCount;
+        }
+
+        private void SetApartmentCount(int apartmentCount)
+        {
+            _apartmentCount = apartmentCount <= 0 ? DefaultApartmentCount : apartmentCount;
+        }
+
+        private void SetEntranceCount(int entranceCount)
+        {
+            _entranceCount = entranceCount <= 0 ? DefaultEntranceCount : entranceCount;
+        }
+        
         private long GenerateNewId()
         {
-            return ++buildingId;
+            return ++_buildingId;
         }
 
     }

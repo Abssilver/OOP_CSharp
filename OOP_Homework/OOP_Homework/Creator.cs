@@ -14,13 +14,48 @@ namespace OOP_Homework
         Создать тестовый пример, работающий с созданными классами.
     */ 
     
-    internal class Creator : BaseCreator
+    internal class Creator
     {
         private static readonly Hashtable BuildingCollection = new Hashtable();
-
-        public override Building CreateBuilding()
+        private Creator()
+        { }
+        public static Building CreateBuilding()
         {
             var building = new Building();
+            AddBuildingToCollection(building);
+            return building;
+        }
+        
+        public static Building CreateBuilding(double height)
+        {
+            var building = new Building(height);
+            AddBuildingToCollection(building);
+            return building;
+        }
+        
+        public static Building CreateBuilding(double height, int floors)
+        {
+            var building = new Building(height, floors);
+            AddBuildingToCollection(building);
+            return building;
+        }
+        public static Building CreateBuilding(double height, int floors, int apartments)
+        {
+            var building = new Building(height, floors, apartments);
+            AddBuildingToCollection(building);
+            return building;
+        }
+        
+        public static Building CreateBuilding(double height, int floors, int apartments, int entrances)
+        {
+            var building = new Building(height, floors, apartments, entrances);
+            AddBuildingToCollection(building);
+            return building;
+        }
+        
+
+        private static void AddBuildingToCollection(Building building)
+        {
             try
             {
                 BuildingCollection.Add(building.GetId(), building);
@@ -29,10 +64,9 @@ namespace OOP_Homework
             {
                 Console.WriteLine($"An element with Key: {building.GetId()} already exists.");
             }
-            return building;
         }
 
-        public override void DeleteBuilding(long id)
+        public static void DeleteBuilding(long id)
         {
             if (!BuildingCollection.ContainsKey(id))
             {
@@ -40,8 +74,8 @@ namespace OOP_Homework
                 return; 
             }
 
-            BuildingCollection.Remove(id);
             Console.WriteLine($"Removing building with id: {id}");
+            BuildingCollection.Remove(id);
         }
     }
 }
