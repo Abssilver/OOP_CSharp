@@ -8,7 +8,7 @@
     Для этого в классе предусмотреть статическое поле, которое бы хранило последний использованный номер здания, и 
     предусмотреть метод, который увеличивал бы значение этого поля.
     */
-    internal class Building
+    public class Building
     {
         private static long buildingId;
         private long _id;
