@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Homework", "OOP_Homework\OOP_Homework.csproj", "{42072CF3-B960-418D-98C1-CD7DA60BBE86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Data", "Library.Data\Library.Data.csproj", "{A3889CF2-1268-4A53-A572-94F519F8AEEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42072CF3-B960-418D-98C1-CD7DA60BBE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42072CF3-B960-418D-98C1-CD7DA60BBE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42072CF3-B960-418D-98C1-CD7DA60BBE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42072CF3-B960-418D-98C1-CD7DA60BBE86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3889CF2-1268-4A53-A572-94F519F8AEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3889CF2-1268-4A53-A572-94F519F8AEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3889CF2-1268-4A53-A572-94F519F8AEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3889CF2-1268-4A53-A572-94F519F8AEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
