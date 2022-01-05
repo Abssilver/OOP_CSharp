@@ -16,34 +16,32 @@ namespace OOP_Homework
     
     internal class Creator
     {
+        private const double DefaultHeight = 5;
+        private const int DefaultFloorCount = 2;
+        private const int DefaultApartmentCount = 8;
+        private const int DefaultEntranceCount = 1;
+        
         private static readonly Hashtable BuildingCollection = new Hashtable();
         private Creator()
         { }
+
         public static Building CreateBuilding()
         {
-            var building = new Building();
-            AddBuildingToCollection(building);
-            return building;
+            return CreateBuilding(DefaultHeight, DefaultFloorCount, DefaultApartmentCount, DefaultEntranceCount);
         }
-        
+
         public static Building CreateBuilding(double height)
         {
-            var building = new Building(height);
-            AddBuildingToCollection(building);
-            return building;
+            return CreateBuilding(height, DefaultFloorCount, DefaultApartmentCount, DefaultEntranceCount);
         }
         
         public static Building CreateBuilding(double height, int floors)
         {
-            var building = new Building(height, floors);
-            AddBuildingToCollection(building);
-            return building;
+            return CreateBuilding(height, floors, DefaultApartmentCount, DefaultEntranceCount);
         }
         public static Building CreateBuilding(double height, int floors, int apartments)
         {
-            var building = new Building(height, floors, apartments);
-            AddBuildingToCollection(building);
-            return building;
+            return CreateBuilding(height, floors, apartments, DefaultEntranceCount);
         }
         
         public static Building CreateBuilding(double height, int floors, int apartments, int entrances)
@@ -53,7 +51,6 @@ namespace OOP_Homework
             return building;
         }
         
-
         private static void AddBuildingToCollection(Building building)
         {
             try

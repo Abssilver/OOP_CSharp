@@ -1,4 +1,6 @@
-﻿namespace OOP_Homework
+﻿using System;
+
+namespace OOP_Homework
 {
     /*
     Реализовать класс для описания здания (уникальный номер здания, высота, этажность, количество квартир, подъездов). 
@@ -10,11 +12,6 @@
     */
     internal class Building
     {
-        private const double DefaultHeight = 5;
-        private const int DefaultFloorCount = 2;
-        private const int DefaultApartmentCount = 8;
-        private const int DefaultEntranceCount = 1;
-        
         private static long _buildingId;
         private long _id;
         private double _height;
@@ -22,13 +19,12 @@
         private int _apartmentCount;
         private int _entranceCount;
 
-        public Building(): this(DefaultHeight)
-        { }
-        public Building(double height, int floorCount = DefaultFloorCount, 
-            int apartmentCount = DefaultApartmentCount,
-            int entranceCount = DefaultEntranceCount)
+        public Building()
         {
             SetId(GenerateNewId());
+        }
+        public Building(double height, int floorCount, int apartmentCount, int entranceCount): this()
+        {
             SetHeight(height);
             SetFloorCount(floorCount);
             SetApartmentCount(apartmentCount);
@@ -77,27 +73,34 @@
                 ? (int)System.MathF.Floor(apartmentPerFloor)
                 : _apartmentCount - (int)System.MathF.Floor((_floorCount - 1) * apartmentPerFloor);
         }
-
         private void SetId(long id) => _id = id;
 
         private void SetHeight(double height)
         {
-            _height = height <= 0 ? DefaultHeight : height;
+            _height = height <= 0 
+                ? throw new ArgumentException($"Invalid height data: {height}")
+                : height;
         }
 
         private void SetFloorCount(int floorCount)
         {
-            _floorCount = floorCount <= 0 ? DefaultFloorCount : floorCount;
+            _floorCount = floorCount <= 0 
+                ? throw new ArgumentException($"Invalid floor data: {floorCount}")
+                : floorCount;
         }
 
         private void SetApartmentCount(int apartmentCount)
         {
-            _apartmentCount = apartmentCount <= 0 ? DefaultApartmentCount : apartmentCount;
+            _apartmentCount = apartmentCount <= 0 
+                ? throw new ArgumentException($"Invalid apartment data: {apartmentCount}")
+                : apartmentCount;
         }
 
         private void SetEntranceCount(int entranceCount)
         {
-            _entranceCount = entranceCount <= 0 ? DefaultEntranceCount : entranceCount;
+            _entranceCount = entranceCount <= 0 
+                ? throw new ArgumentException($"Invalid entrance data: {entranceCount}")
+                : entranceCount;
         }
         
         private long GenerateNewId()
