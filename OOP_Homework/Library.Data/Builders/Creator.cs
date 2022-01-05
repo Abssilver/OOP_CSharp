@@ -14,7 +14,7 @@ namespace OOP_Homework
         Создать тестовый пример, работающий с созданными классами.
     */ 
     
-    internal class Creator
+    public class Creator
     {
         private const double DefaultHeight = 5;
         private const int DefaultFloorCount = 2;

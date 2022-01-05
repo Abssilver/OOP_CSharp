@@ -10,7 +10,7 @@ namespace OOP_Homework
     Для этого в классе предусмотреть статическое поле, которое бы хранило последний использованный номер здания, и 
     предусмотреть метод, который увеличивал бы значение этого поля.
     */
-    internal class Building
+    public class Building
     {
         private static long _buildingId;
         private long _id;
@@ -19,7 +19,7 @@ namespace OOP_Homework
         private int _apartmentCount;
         private int _entranceCount;
 
-        public Building()
+        private Building()
         {
             SetId(GenerateNewId());
         }
@@ -108,5 +108,14 @@ namespace OOP_Homework
             return ++_buildingId;
         }
 
+        public string Print()
+        {
+            var id = GetId();
+            var height = GetHeight();
+            var floor = GetFloorCount();
+            var apartment = GetTotalApartmentCount();
+            var entrance = GetEntranceCount();
+            return $"Building: {id}, Height:{height}, Floor: {floor}, Apartment: {apartment}, Entrance: {entrance}";
+        }
     }
 }
