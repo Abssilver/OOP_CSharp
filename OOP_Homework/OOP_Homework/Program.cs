@@ -3,57 +3,43 @@
 namespace OOP_Homework
 {
     /*
-    Создать класс счет в банке с закрытыми полями: 
-    номер счета, баланс, тип банковского счета (использовать перечислимый тип). 
-    Предусмотреть методы для доступа к данным – заполнения и чтения. Создать объект класса, 
-    заполнить его поля и вывести информацию об объекте класса на печать
-    Изменить класс счет в банке из упражнения таким образом, чтобы номер счета генерировался сам и был уникальным. 
-    Для этого надо создать в классе статическую переменную и метод, который увеличивает значение этого переменной.
-    В классе банковский счет, удалить методы заполнения полей. Вместо этих методов создать конструкторы. 
-    Переопределить конструктор по умолчанию, создать конструктор для заполнения поля баланс, 
-    конструктор для заполнения поля тип банковского счета, конструктор для заполнения баланса и 
-    типа банковского счета. Каждый конструктор должен вызывать метод, генерирующий номер счета.
-    В классе все методы для заполнения и получения значений полей заменить на свойства. Написать тестовый пример.
-    (*)Добавить в класс счет в банке два метода: снять со счета и положить на счет. Метод снять со счета проверяет, 
-    возможно ли снять запрашиваемую сумму, и в случае положительного результата изменяет баланс. 
+    Создать класс рациональных чисел. В классе два поля – числитель и знаменатель. 
+    Предусмотреть конструктор. Определить операторы ==, != (метод Equals()), <, >, <=, >=, +, – , ++, --. 
+    Переопределить метод ToString() для вывода дроби. 
+    Определить операторы преобразования типов между типом дробь, float, int. Определить операторы *, /, %. 
+    
+    (*) На перегрузку операторов. Описать класс комплексных чисел. 
+    Реализовать операцию сложения, умножения, вычитания, проверку на равенство двух комплексных чисел. 
+    Переопределить метод ToString() для комплексного числа. Протестировать на простом примере.
     */
     class Program
     {
         static void Main(string[] args)
         {
-            var badAccount = CreateTestAccount();
+            Console.Title = "Fractions";
+            Fraction fractionOne = new Fraction(50, 20);
+            Fraction fractionTwo = new Fraction(7, 8);
+            
+            Console.WriteLine($"The first fraction is: {fractionOne}");
+            Console.WriteLine($"The second fraction is: {fractionTwo}");
+            Console.WriteLine($"The first == second operator result: {fractionOne == fractionTwo}");
+            Console.WriteLine($"The first != second operator result: {fractionOne != fractionTwo}");
+            Console.WriteLine($"The first equals second result: {fractionOne.Equals(fractionTwo)}");
+            Console.WriteLine($"The first < second operator result: {fractionOne < fractionTwo}");
+            Console.WriteLine($"The first > second operator result: {fractionOne > fractionTwo}");
+            Console.WriteLine($"The first <= second operator result: {fractionOne <= fractionTwo}");
+            Console.WriteLine($"The first >= second operator result: {fractionOne >= fractionTwo}");
+            Console.WriteLine($"The first + second operator result: {fractionOne + fractionTwo}");
+            Console.WriteLine($"The first - second operator result: {fractionOne - fractionTwo}");
+            Console.WriteLine($"The first * second operator result: {fractionOne * fractionTwo}");
+            Console.WriteLine($"The first / second operator result: {fractionOne / fractionTwo}");
+            Console.WriteLine($"The first % second operator result: {fractionOne % fractionTwo}");
+            Console.WriteLine($"The (int)second operator result: {(int)fractionTwo}");
+            Console.WriteLine($"The (float)first operator result: {(float)fractionOne}");
+            Console.WriteLine($"The ++first operator result: {++fractionOne}");
+            Console.WriteLine($"The --second operator result: {--fractionTwo}");
             Console.WriteLine("BreakPoint");
-            Console.WriteLine($"Result: {badAccount.GetData()}");
             Console.ReadKey();
-            var betterAccount = CreateSecondAccount();
-            Console.WriteLine("BreakPoint");
-            Console.WriteLine($"Result: {betterAccount.GetData()}");
-            Console.ReadKey();
-        }
-
-        private static Account CreateTestAccount()
-        {
-            var badAccount = new Account();
-            badAccount.AssignId(0);
-            badAccount.AddCash(1_000_000);
-            badAccount.ChangeAccountType(AccountType.Individual);
-            badAccount.RemoveCash(500_000);
-            return badAccount;
-        }
-
-        private static ImprovedAccount CreateSecondAccount()
-        {
-            var cashToAdd = 1_000_000;
-            var cashToRemove = 500_000;
-            var betterAccount = new ImprovedAccount(500_000, AccountType.Individual);
-            Console.WriteLine(betterAccount.GetData());
-            betterAccount.AddCash(cashToAdd);
-            Console.WriteLine($"Add: {cashToAdd}");
-            Console.WriteLine(betterAccount.GetData());
-            betterAccount.RemoveCash(cashToRemove);
-            Console.WriteLine($"Remove: {cashToRemove}");
-            Console.WriteLine(betterAccount.GetData());
-            return betterAccount;
         }
     }
 }

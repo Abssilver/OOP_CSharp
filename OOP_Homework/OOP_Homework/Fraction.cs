@@ -40,7 +40,7 @@ namespace OOP_Homework
 
         #region Methods
         public Fraction Addition(Fraction toAdd) =>
-            new(this.Numerator * toAdd.Denominator + Denominator * toAdd.Numerator,
+            new(this.Numerator * toAdd.Denominator + this.Denominator * toAdd.Numerator,
                 this.Denominator * toAdd.Denominator);
         public Fraction Subtraction(Fraction toSubtract) =>
             this.Addition(toSubtract.MultiplyFractionByNumber(-1));
@@ -165,27 +165,46 @@ namespace OOP_Homework
         public static Fraction operator ++(Fraction fraction)
         {
             NullCheck(fraction);
-            return fraction.AddNumberToFraction(1);
+            return new(fraction.Numerator + 1, fraction.Denominator);
         }
 
         public static Fraction operator --(Fraction fraction)
         {
             NullCheck(fraction);
-            return fraction.SubtractNumberFromFraction(1); 
+            return new(fraction.Numerator - 1, fraction.Denominator);
         }
 
+        public static implicit operator float(Fraction fraction)
+        {
+            NullCheck(fraction);
+            return (float)fraction.Numerator / fraction.Denominator;
+        }
+        
+        public static explicit operator int(Fraction fraction)
+        {
+            NullCheck(fraction);
+            return fraction.Numerator / fraction.Denominator;
+        }
+        
         public static Fraction operator *(Fraction first, Fraction second)
         {
             NullCheck(first, second);
             return first.Multiplication(second);
         }
-
+        
         public static Fraction operator /(Fraction first, Fraction second)
         {
             NullCheck(first, second);
             return first.Division(second);
         }
-        
+
+        public static Fraction operator %(Fraction first, Fraction second)
+        {
+            NullCheck(first, second);
+            return new(first.Numerator * second.Denominator % first.Denominator * second.Numerator,
+                first.Denominator * second.Denominator);
+        }
+
         public override string ToString() =>
             Math.Abs(Numerator) < Math.Abs(Denominator) && Numerator != 0 
                 ? $"[ {Numerator} / {Denominator} ]" 
