@@ -16,10 +16,16 @@ namespace OOP_Homework
     {
         static void Main(string[] args)
         {
-            Console.Title = "Fractions";
-            Fraction fractionOne = new Fraction(50, 20);
-            Fraction fractionTwo = new Fraction(7, 8);
-            
+            FractionsExample();
+            ComplexNumberExample();
+        }
+
+        private static void FractionsExample()
+        {
+            Console.WriteLine("Fractions");
+            var fractionOne = new Fraction(50, 20);
+            var fractionTwo = new Fraction(7, 8);
+
             Console.WriteLine($"The first fraction is: {fractionOne}");
             Console.WriteLine($"The second fraction is: {fractionTwo}");
             Console.WriteLine($"The first == second operator result: {fractionOne == fractionTwo}");
@@ -38,6 +44,30 @@ namespace OOP_Homework
             Console.WriteLine($"The (float)first operator result: {(float)fractionOne}");
             Console.WriteLine($"The ++first operator result: {++fractionOne}");
             Console.WriteLine($"The --second operator result: {--fractionTwo}");
+            Console.WriteLine("BreakPoint");
+            Console.ReadKey();
+        }
+
+        private static void ComplexNumberExample()
+        {
+            Console.WriteLine("Complex Numbers");
+
+            var complexOne = new ComplexNumber(4, 4);
+            var complexTwo = new ComplexNumber(1, 2);
+            var complexThree = new ComplexNumber(4, 4);
+            
+            Console.WriteLine($"The first complex number: {complexOne}");
+            Console.WriteLine($"The second complex number: {complexTwo}");
+            Console.WriteLine($"The third complex number: {complexThree}");
+            
+            Console.WriteLine($"The first + the second: {complexOne + complexTwo}");
+            Console.WriteLine($"The first - the second: {complexOne - complexTwo}");
+            Console.WriteLine($"The first * the second: {complexOne * complexTwo}");
+            Console.WriteLine($"The first equals the second: {complexOne.Equals(complexTwo)}");
+            Console.WriteLine($"The first == the second: {complexOne == complexTwo}");
+            Console.WriteLine($"The first equals the third: {complexOne.Equals(complexThree)}");
+            Console.WriteLine($"The first == the third: {complexOne == complexThree}");
+            
             Console.WriteLine("BreakPoint");
             Console.ReadKey();
         }
