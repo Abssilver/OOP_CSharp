@@ -1,57 +1,46 @@
 ﻿using System;
-using System.IO;
 
 namespace OOP_Homework
 {
     /*
-    В класс банковский счет, созданный в упражнениях добавить метод, который переводит деньги с одного счета на другой.
-    У метода два параметра: ссылка на объект класса банковский счет откуда снимаются деньги, второй параметр – сумма.
-    Реализовать метод, который в качестве входного параметра принимает строку string, возвращает строку типа string, 
-    буквы в которой идут в обратном порядке. Протестировать метод.
-    (*) Работа со строками. Дан текстовый файл, содержащий ФИО и e-mail адрес. 
-    Разделителем между ФИО и адресом электронной почты является символ &: 
-    Кучма Андрей Витальевич & Kuchma@mail.ru Мизинцев Павел Николаевич & Pasha@mail.ru Сформировать новый файл, 
-    содержащий список адресов электронной почты. Предусмотреть метод, выделяющий из строки адрес почты. 
-    Методу в качестве параметра передается символьная строка s, e-mail возвращается в той же строке s: 
-    public void SearchMail (ref string s).
-    */
+     Для класса банковский счет переопределить операторы == и != для сравнения информации в двух счетах. 
+     Переопределить метод Equals аналогично оператору ==, не забыть переопределить метод GetHashCode(). 
+     Переопределить метод ToString() для печати информации о счете.
+     Протестировать функционирование переопределенных методов и операторов на простом примере.
+     (*) Создать класс Figure для работы с геометрическими фигурами.
+     В качестве полей класса задаются цвет фигуры, состояние «видимое/невидимое».
+     Реализовать операции: передвижение геометрической фигуры по горизонтали, по вертикали, изменение цвета,
+     опрос состояния (видимый/невидимый). Метод вывода на экран должен выводить состояние всех полей объекта.
+     Создать класс Point (точка) как потомок геометрической фигуры. Создать класс Circle (окружность) как потомок точки.
+     В класс Circle добавить метод, который вычисляет площадь окружности.
+     Создать класс Rectangle (прямоугольник) как потомок точки, реализовать метод вычисления площади прямоугольника.
+     Точка, окружность, прямоугольник должны поддерживать методы передвижения по горизонтали и вертикали, изменения цвета.
+     */
     class Program
     {
         static void Main(string[] args)
         {
-            var betterAccount = CreateSecondAccount();
-            Console.WriteLine("BreakPoint");
-            Console.WriteLine($"Result: {betterAccount.GetData()}");
-            Console.ReadKey();
-
-            var testString = "nice to meet you";
-            Console.WriteLine(testString);
-            Console.WriteLine("BreakPoint. Any key to revert");
-            Console.ReadKey();
-            Console.WriteLine($"Result: {StringRevertUtil.GetRevertString(testString)}");
-
-            Console.WriteLine("Starting parser service");
-            var path = Path.GetFullPath(
-                Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..", "TextExample.txt"));
-            var parser = new TextFileParser(path, '&');
-            parser.CreateEmailList("ExampleResult.txt");
-            Console.WriteLine("BreakPoint. Any key to continue");
-            Console.ReadKey();
+            AccountExample();
         }
 
-        private static ImprovedAccount CreateSecondAccount()
+        private static void AccountExample()
         {
-            var cashToAdd = 1_000_000;
-            var cashToRemove = 500_000;
-            var betterAccount = new ImprovedAccount(500_000, AccountType.Individual);
-            Console.WriteLine(betterAccount.GetData());
-            betterAccount.AddCash(cashToAdd);
-            Console.WriteLine($"Add: {cashToAdd}");
-            Console.WriteLine(betterAccount.GetData());
-            betterAccount.RemoveCash(cashToRemove);
-            Console.WriteLine($"Remove: {cashToRemove}");
-            Console.WriteLine(betterAccount.GetData());
-            return betterAccount;
+            var accountFirst = new ImprovedAccount(500_000, AccountType.Individual);
+            var accountSecond = new ImprovedAccount(500_000, AccountType.Individual);
+            var accountThird = accountFirst;
+            Console.WriteLine("BreakPoint");
+            Console.WriteLine("Created accounts:");
+            Console.WriteLine($"First: {accountFirst}");
+            Console.WriteLine($"Second: {accountSecond}");
+            Console.WriteLine($"Third (reference to first): {accountThird}");
+            Console.WriteLine($"First == Second: {accountFirst == accountSecond}");
+            Console.WriteLine($"First != Second: {accountFirst != accountSecond}");
+            Console.WriteLine($"First equals Second: {accountFirst.Equals(accountSecond)}");
+            Console.WriteLine($"First == Third: {accountFirst == accountThird}");
+            Console.WriteLine($"First != Third: {accountFirst != accountThird}");
+            Console.WriteLine($"First equals Third: {accountFirst.Equals(accountThird)}");
+            Console.WriteLine("BreakPoint. Any key to continue");
+            Console.ReadKey();
         }
     }
 }

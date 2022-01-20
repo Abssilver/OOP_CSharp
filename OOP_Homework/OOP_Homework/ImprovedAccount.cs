@@ -1,6 +1,14 @@
 ﻿
+using System;
+
 namespace OOP_Homework
 {
+    /*
+     Для класса банковский счет переопределить операторы == и != для сравнения информации в двух счетах. 
+     Переопределить метод Equals аналогично оператору ==, не забыть переопределить метод GetHashCode(). 
+     Переопределить метод ToString() для печати информации о счете.
+     Протестировать функционирование переопределенных методов и операторов на простом примере.
+     */
     internal class ImprovedAccount
     {
         //TODO: Use GUID or something
@@ -79,10 +87,36 @@ namespace OOP_Homework
             
             _balance -= cashToRemove;
         }
-        
-        public string GetData()
+
+        public static bool operator ==(ImprovedAccount first, ImprovedAccount second)
         {
-            return $"Account: {Id}, Balance: {Balance}, Account Type: {AccountType}";
+            if (first is null || second is null)
+                return false;
+            
+            return first.Id == second.Id;
         }
+
+        public static bool operator !=(ImprovedAccount first, ImprovedAccount second)
+        {
+            if (first is null || second is null)
+                return true;
+            
+            return first.Id != second.Id;
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ImprovedAccount);
+
+        public bool Equals(ImprovedAccount other)
+        {
+            return other != null && this.Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
+
+        public override string ToString() => 
+            $"Account: {Id}, Balance: {Balance}, Account Type: {AccountType}";
     }
 }
