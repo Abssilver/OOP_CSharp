@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace OOP_Homework
 {
@@ -21,6 +22,7 @@ namespace OOP_Homework
         static void Main(string[] args)
         {
             AccountExample();
+            FigureExample();
         }
 
         private static void AccountExample()
@@ -39,6 +41,55 @@ namespace OOP_Homework
             Console.WriteLine($"First == Third: {accountFirst == accountThird}");
             Console.WriteLine($"First != Third: {accountFirst != accountThird}");
             Console.WriteLine($"First equals Third: {accountFirst.Equals(accountThird)}");
+            Console.WriteLine("BreakPoint. Any key to continue");
+            Console.ReadKey();
+        }
+
+        private static void FigureExample()
+        {
+            var pointCenter = new System.Drawing.Point() { X = 0, Y = 0 };
+            var circleCenter = new System.Drawing.Point() { X = 3, Y = 3 };
+            var rectangleCenter = new System.Drawing.Point() { X = 5, Y = 5 };
+            var isVisible = true;
+            
+            var point = new Point(Color.Azure, isVisible, pointCenter);
+            double radius = 10;
+            var circle = new Circle(Color.Aqua, !isVisible, circleCenter, radius);
+            var width = 10;
+            var height = 5;
+            var rectangle = new Rectangle(Color.Coral, isVisible, rectangleCenter, width, height);
+            
+            Console.WriteLine("BreakPoint");
+            Console.WriteLine("Created Figures:");
+            Console.WriteLine(point);
+            Console.WriteLine(circle);
+            Console.WriteLine(rectangle);
+            
+            var horizontalOffset = 1;
+            point.MoveHorizontal(horizontalOffset);
+            Console.WriteLine($"Move point to ({horizontalOffset}, 0).");
+            Console.WriteLine(point);
+            
+            var newRadius = 3;
+            var newColor = Color.Lime;
+            var verticalOffset = -1;
+            circle.ChangeRadius(newRadius);
+            circle.ChangeColor(newColor);
+            circle.MoveVertical(verticalOffset);
+            Console.WriteLine($"Move circle to (0, {verticalOffset}). Change color to {newColor}. Change radius to {newRadius}");
+            Console.WriteLine(circle);
+            
+            rectangle.ChangeHeight(rectangle.Width);
+            rectangle.MoveHorizontal(horizontalOffset);
+            rectangle.MoveVertical(verticalOffset);
+            rectangle.ChangeColor(newColor);
+
+            Console.WriteLine("Move rectangle to ({0}, {1}). Change color to {2}. Change Height to {3}",
+                horizontalOffset, 
+                verticalOffset,
+                newColor,
+                rectangle.Width);
+            Console.WriteLine(rectangle);
             Console.WriteLine("BreakPoint. Any key to continue");
             Console.ReadKey();
         }
