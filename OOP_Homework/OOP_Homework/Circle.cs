@@ -14,8 +14,8 @@ namespace OOP_Homework
         
         public double Radius => _radius;
 
-        public Circle(Color color, bool isVisible, System.Drawing.Point center, double radius) : base(color, isVisible,
-            center)
+        public Circle(Color color, bool isVisible, System.Drawing.Point center, double radius) 
+            : base(color, isVisible, center)
         {
             _radius = radius;
         }
