@@ -33,10 +33,20 @@ namespace OOP_Homework
         private static void CoderExample()
         {
             Console.WriteLine("BreakPoint");
-            var coder = new ACoder('а', 'я');
-            var encoded = coder.Encode("южмяэйяпясд");
-            Console.WriteLine($"Result Encoded: {encoded}");
-            Console.WriteLine($"Result Decoded: {coder.Decode(encoded)}");
+            Console.WriteLine("Creating A coder");
+            var aCoder = new ACoder('а', 'я');
+            var encodedFirst = aCoder.Encode("южмяэйяпясд");
+            Console.WriteLine($"Result Encoded: {encodedFirst}");
+            Console.WriteLine($"Result Decoded: {aCoder.Decode(encodedFirst)}");
+            Console.WriteLine("BreakPoint. Press any key");
+            Console.ReadKey();
+            
+            Console.WriteLine("BreakPoint");
+            Console.WriteLine("Creating B coder");
+            var bCoder = new BCoder('а', 'я');
+            var encodedSecond = bCoder.Encode("аштябяцхчыс");
+            Console.WriteLine($"Result Encoded: {encodedSecond}");
+            Console.WriteLine($"Result Decoded: {bCoder.Decode(encodedSecond)}");
             Console.WriteLine("BreakPoint. Press any key");
             Console.ReadKey();
         }
