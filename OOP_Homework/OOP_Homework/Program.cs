@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace OOP_Homework
 {
@@ -28,6 +29,7 @@ namespace OOP_Homework
         static void Main(string[] args)
         {
             CoderExample();
+            FigureExample();
         }
 
         private static void CoderExample()

@@ -5,7 +5,7 @@ namespace OOP_Homework
     /*
     Создать класс Rectangle (прямоугольник) как потомок точки, реализовать метод вычисления площади прямоугольника.
     */
-    internal sealed class Rectangle: Point
+    internal sealed class Rectangle: Point, ISquareObject
     {
         private int _width;
         private int _height;

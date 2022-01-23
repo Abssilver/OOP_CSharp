@@ -7,7 +7,7 @@ namespace OOP_Homework
     Создать класс Circle (окружность) как потомок точки.
     В класс Circle добавить метод, который вычисляет площадь окружности.
     */
-    internal sealed class Circle: Point
+    internal sealed class Circle: Point, ISquareObject
     {
         private double _radius;
         private const int Precision = 4;
